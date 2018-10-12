@@ -124,3 +124,9 @@ $ hdfs dfs -ls /eshadoop/output/ch02
 $ hdfs dfs -tail /eshadoop/output/ch02/part-m-00000
 ```
 
+## ch03 深入理解Elasticsearch
+```
+#与Elasticsearch交互: es6-crud.sh
+#Elastic查询和聚合: es6-setup-hrms.sh, es6-query.sh
+```
+
