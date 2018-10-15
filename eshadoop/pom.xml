@@ -25,6 +25,7 @@
     <modules>
         <module>ch01</module>
         <module>ch02</module>
+        <module>ch04</module>
     </modules>
 
     <dependencyManagement>
@@ -56,6 +57,12 @@
                         <groupId>cascading</groupId>
                     </exclusion>
                 </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-csv</artifactId>
+                <version>1.1</version>
             </dependency>
 
         </dependencies>
