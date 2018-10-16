@@ -177,3 +177,9 @@ Search:
   选择仪表盘Dashboards，单击Export: k6-complaints-dashboard.json
 ```
 
+## ch05 实时分析
+```
+#significant term聚合
+#使用Percolator对推文分类
+```
+
