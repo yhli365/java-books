@@ -17,6 +17,7 @@
         <es.hadoop.version>6.3.2</es.hadoop.version>
         <es.version>6.3.2</es.version>
         <hadoop.version>2.6.0-cdh5.14.0</hadoop.version>
+        <spark.version>1.6.0-cdh5.14.0</spark.version>
         <storm.version>1.2.2</storm.version>
         <!-- base -->
         <java.version>1.8</java.version>
@@ -29,6 +30,8 @@
         <module>ch02</module>
         <module>ch04</module>
         <module>ch05</module>
+        <module>ch07</module>
+        <module>ch07-spark</module>
     </modules>
 
     <dependencyManagement>
@@ -41,25 +44,33 @@
             </dependency>
 
             <dependency>
+                <groupId>org.elasticsearch</groupId>
+                <artifactId>elasticsearch-hadoop</artifactId>
+                <version>${es.hadoop.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>org.apache.hadoop</groupId>
                 <artifactId>hadoop-client</artifactId>
                 <version>${hadoop.version}</version>
             </dependency>
 
             <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-core_2.10</artifactId>
+                <version>${spark.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-sql_2.10</artifactId>
+                <version>${spark.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>org.elasticsearch</groupId>
-                <artifactId>elasticsearch-hadoop</artifactId>
-                <version>${es.hadoop.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>cascading-hadoop</artifactId>
-                        <groupId>cascading</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>cascading-local</artifactId>
-                        <groupId>cascading</groupId>
-                    </exclusion>
-                </exclusions>
+                <artifactId>elasticsearch-spark-13_2.10</artifactId>
+                <version>${es.version}</version>
             </dependency>
 
             <dependency>
@@ -102,6 +113,22 @@
                 <groupId>org.twitter4j</groupId>
                 <artifactId>twitter4j-stream</artifactId>
                 <version>3.0.6</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cascading</groupId>
+                <artifactId>cascading-core</artifactId>
+                <version>2.6.3</version>
+            </dependency>
+            <dependency>
+                <groupId>cascading</groupId>
+                <artifactId>cascading-local</artifactId>
+                <version>2.6.3</version>
+            </dependency>
+            <dependency>
+                <groupId>cascading</groupId>
+                <artifactId>cascading-hadoop</artifactId>
+                <version>2.6.3</version>
             </dependency>
 
         </dependencies>

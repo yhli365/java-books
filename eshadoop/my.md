@@ -14,6 +14,8 @@ elasticsearch-6.3.2.tar.gz
 kibana-6.3.2-linux-x86_64.tar.gz
 hadoop-2.6.0-cdh5.14.0.tar.gz
 hadoop-2.6.0-cdh5.14.0-native.tar.gz
+pig-0.16.0.tar.gz
+apache-hive-1.2.2-bin.tar.gz
 curl --version
 ```
 
@@ -183,3 +185,27 @@ Search:
 #使用Percolator对推文分类
 ```
 
+## ch06 ES-Hadoop配置
+```
+#分布式环境中的Elasticsearch
+#ES-Hadoop架构
+#生产环境配置
+#集群管理
+```
+
+## ch07 与Hadoop生态系统集成
+```
+#与Pig集成
+$ hdfs dfs -mkdir -p /eshadoop/lib
+$ hdfs dfs -put elasticsearch-hadoop-6.3.2.jar /eshadoop/lib
+$ hdfs dfs -mkdir -p /eshadoop/input/ch07/csv
+$ hdfs dfs -put ch07/crimes_dataset.csv /eshadoop/input/ch07/csv
+$ hdfs dfs -mkdir -p /eshadoop/input/ch07/json
+$ hdfs dfs -put ch07/crimes.json /eshadoop/input/json
+$ pig es-writer.pig
+$ pig es-writer-json.pig
+$ pig es-reader.pig
+
+#与Hive集成
+
+```
