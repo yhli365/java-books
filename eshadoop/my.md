@@ -201,11 +201,22 @@ $ hdfs dfs -put elasticsearch-hadoop-6.3.2.jar /eshadoop/lib
 $ hdfs dfs -mkdir -p /eshadoop/input/ch07/csv
 $ hdfs dfs -put ch07/crimes_dataset.csv /eshadoop/input/ch07/csv
 $ hdfs dfs -mkdir -p /eshadoop/input/ch07/json
-$ hdfs dfs -put ch07/crimes.json /eshadoop/input/json
-$ pig es-writer.pig
-$ pig es-writer-json.pig
-$ pig es-reader.pig
+$ hdfs dfs -put ch07/crimes.json /eshadoop/input/ch07/json
+$ vi myparams
+dfs_name=hadoop1:9000
+es_nodes=10.10.8.111:9200
+$ pig -m myparams
+grunt> 
+grunt> quit
+$ pig -m myparams -f ch07/es-writer.pig
+$ pig -m myparams -f ch07/es-reader.pig
+$ pig -m myparams -f ch07/es-writer-json.pig
 
 #与Hive集成
-
+$ mkdir ~/hive/auxlib
+$ cp elasticsearch-hadoop-6.3.2.jar ~/hive/auxlib
+$ hive
+hive> 
+$ hive -f ch07/es-writer.sql
+$ hive -f ch07/es-reader.sql
 ```

@@ -7,8 +7,7 @@ DROP TABLE IF EXISTS crimes_json;
 CREATE EXTERNAL TABLE crimes_json (
         jsonData      STRING)
 STORED BY 'org.elasticsearch.hadoop.hive.EsStorageHandler'
-TBLPROPERTIES('es.resource' = 'esh_hive/crimes_json',
-              'es.input.json' = 'true');
+TBLPROPERTIES('es.resource' = 'esh_hive/crimes_json', 'es.input.json' = 'true');
 
 -- insert data to Elasticsearch from another table called 'source'
 

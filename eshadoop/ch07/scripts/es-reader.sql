@@ -13,10 +13,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS theft_crimes (
    domestic BOOLEAN,
    geoLocation   STRUCT<lat:DOUBLE, lon:DOUBLE>)
 STORED BY 'org.elasticsearch.hadoop.hive.EsStorageHandler'
-TBLPROPERTIES('es.nodes'='es1', 
-              'es.port'='9200',
-			  'es.resource' = 'esh_hive/crimes', 
-              'es.query' = '{"query" : { "term" : { "primarytype" : "theft" } } }');
+TBLPROPERTIES('es.nodes'='10.10.8.111:9200', 'es.resource' = 'esh_hive/crimes', 'es.query' = '{"query" : { "term" : { "primarytype" : "theft" } } }');
 
 -- stream data from Elasticsearch
 SELECT location, count(*) as noOfCrimes FROM theft_crimes group by location;

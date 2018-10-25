@@ -16,7 +16,6 @@ CREATE EXTERNAL TABLE source (
     lon DOUBLE)
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 STORED AS TEXTFILE
--- LOCATION '/ch07';
 LOCATION '/eshadoop/input/ch07/csv';
 
 CREATE EXTERNAL TABLE crimes (
@@ -32,9 +31,7 @@ CREATE EXTERNAL TABLE crimes (
         domestic BOOLEAN,
         geoLocation   STRUCT<lat:DOUBLE, lon:DOUBLE>)
 STORED BY 'org.elasticsearch.hadoop.hive.EsStorageHandler'
-TBLPROPERTIES('es.nodes'='es1', 
-              'es.port'='9200',
-			  'es.resource' = 'esh_hive/crimes');
+TBLPROPERTIES('es.nodes' = '10.10.8.111:9200', 'es.resource' = 'esh_hive/crimes');
 
 -- insert data to Elasticsearch from another table called 'source'
 INSERT OVERWRITE TABLE crimes
